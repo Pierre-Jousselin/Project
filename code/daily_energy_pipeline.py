@@ -42,7 +42,7 @@ energy_load_data = energy_load_data.iloc[[-1]]
 
 uri = "mongodb+srv://pgmjo:"+mongo_password+"@cluster0.noq3s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # Create a new client and connect to the server
-client = MongoClient(uri,ssl_cert_reqs=ssl.CERT_NONE)
+client = MongoClient(uri)
 db = client["daily_energy_load"]  # Replace 'mydatabase' with your database name
 collection = db["S3"]  # Replace 'mycollection' with your collection name
 data_dict = energy_load_data.to_dict("records")
