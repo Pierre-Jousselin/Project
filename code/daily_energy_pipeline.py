@@ -4,10 +4,9 @@ import os
 from entsoe import EntsoePandasClient
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from pymongo import UpdateOne
 
 entsoe_api_key = "22cb6d0f-5368-4495-95b0-3856c4bb6f7b"
-
-
 mongo_password= "aIdg0yUMUaZHyVN7"
 client = EntsoePandasClient(api_key=entsoe_api_key)
 country_code = "SE_3"
@@ -42,13 +41,29 @@ energy_load_data = energy_load_data.iloc[[-1]]
 
 uri = "mongodb+srv://pgmjo:"+mongo_password+"@cluster0.noq3s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # Create a new client and connect to the server
-client = MongoClient(uri,
-    tls=True,
-    tlsAllowInvalidCertificates=False,
-    serverSelectionTimeoutMS=50000)
+client = MongoClient(uri)
 db = client["daily_energy_load"]  # Replace 'mydatabase' with your database name
 collection = db["S3"]  # Replace 'mycollection' with your collection name
-data_dict = energy_load_data.to_dict("records")
 
-# Insérer dans la collection MongoDB
-result = collection.insert_many(data_dict)
+data_dict = energy_load_data.to_dict("records")
+# Prepare the data by setting `date` as the `_id` field
+for record in data_dict:
+    record['_id'] = record['date']  # Set `date` as the primary key
+
+# Insert or update the data in MongoDB
+update_operations = []
+for record in data_dict:
+    update_operations.append(
+        UpdateOne(
+            {'_id': record['_id']},  # Match by `_id` which is now the `date`
+            {'$set': record},
+            upsert=True  # Insert if not exists
+        )
+    )
+
+# Perform the bulk write operation
+result = collection.bulk_write(update_operations)
+
+# Output the result
+print(f"Number of documents inserted: {result.upserted_count}")
+print(f"Number of documents updated: {result.modified_count}")
