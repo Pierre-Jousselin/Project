@@ -2,7 +2,7 @@
 import pandas as pd
 import openmeteo_requests
 import requests_cache
-
+from retry_requests import retry
 
 SE_dict = {"SE_1":{"Lulea":{"latitude":65.585220558314, "longitude":22.1535400967245},
                   "Kiruna":{"latitude":67.8597228129746, "longitude":20.2820265311514},
