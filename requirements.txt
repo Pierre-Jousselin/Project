@@ -6,3 +6,4 @@ pymongo
 entsoe-py
 openmeteo_requests
 requests_cache
+geopy
