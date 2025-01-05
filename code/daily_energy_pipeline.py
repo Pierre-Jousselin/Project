@@ -9,7 +9,8 @@ entsoe_api_key = "22cb6d0f-5368-4495-95b0-3856c4bb6f7b"
 
 
 mongo_password= "aIdg0yUMUaZHyVN7"
-client = EntsoePandasClient(api_key=entsoe_api_key)
+client = EntsoePandasClient(api_key=entsoe_api_key,
+    serverSelectionTimeoutMS=50000)
 country_code = "SE_3"
 energy_load_data = pd.DataFrame()
 
