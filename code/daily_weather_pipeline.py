@@ -74,6 +74,7 @@ def get_daily_weather_forecast(city, latitude, longitude):
     daily_df = daily_df.reset_index()
     daily_df['date'] = pd.to_datetime(daily_df['date']).dt.date
     daily_df['date'] = pd.to_datetime(daily_df['date'])
+    daily_df['city'] = city
     return daily_df
 
 from pymongo.mongo_client import MongoClient
