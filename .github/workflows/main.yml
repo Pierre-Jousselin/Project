@@ -28,3 +28,4 @@ jobs:
       run: |
         cd code
         python daily_energy_pipeline.py
+        python daily_weather_pipeline.py
