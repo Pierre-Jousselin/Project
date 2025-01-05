@@ -6,6 +6,12 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 entsoe_api_key = os.getenv("ENSTO_API")
+
+if not entsoe_api_key:
+    raise ValueError("The ENSTO_API environment variable is not set. Please configure it in GitHub Actions.")
+
+print("API Key successfully loaded.")
+
 mongo_password= os.getenv("mango_password")
 client = EntsoePandasClient(api_key=entsoe_api_key)
 country_code = "SE_3"
