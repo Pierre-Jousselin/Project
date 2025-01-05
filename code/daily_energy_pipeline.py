@@ -5,14 +5,10 @@ from entsoe import EntsoePandasClient
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-entsoe_api_key = os.getenv("ENSTO_API")
+entsoe_api_key = "22cb6d0f-5368-4495-95b0-3856c4bb6f7b"
 
-if not entsoe_api_key:
-    raise ValueError("The ENSTO_API environment variable is not set. Please configure it in GitHub Actions.")
 
-print("API Key successfully loaded.")
-
-mongo_password= os.getenv("mango_password")
+mongo_password= "aIdg0yUMUaZHyVN7"
 client = EntsoePandasClient(api_key=entsoe_api_key)
 country_code = "SE_3"
 energy_load_data = pd.DataFrame()
