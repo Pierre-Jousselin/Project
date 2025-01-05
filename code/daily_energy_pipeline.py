@@ -9,9 +9,7 @@ entsoe_api_key = "22cb6d0f-5368-4495-95b0-3856c4bb6f7b"
 
 
 mongo_password= "aIdg0yUMUaZHyVN7"
-client = EntsoePandasClient(api_key=entsoe_api_key,
-    tls=True,
-    tlsAllowInvalidCertificates=False)
+client = EntsoePandasClient(api_key=entsoe_api_key)
 country_code = "SE_3"
 energy_load_data = pd.DataFrame()
 
@@ -44,7 +42,9 @@ energy_load_data = energy_load_data.iloc[[-1]]
 
 uri = "mongodb+srv://pgmjo:"+mongo_password+"@cluster0.noq3s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # Create a new client and connect to the server
-client = MongoClient(uri)
+client = MongoClient(uri,
+    tls=True,
+    tlsAllowInvalidCertificates=False)
 db = client["daily_energy_load"]  # Replace 'mydatabase' with your database name
 collection = db["S3"]  # Replace 'mycollection' with your collection name
 data_dict = energy_load_data.to_dict("records")
