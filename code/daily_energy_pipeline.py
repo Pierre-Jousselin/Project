@@ -4,7 +4,6 @@ import os
 from entsoe import EntsoePandasClient
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-import ssl
 
 entsoe_api_key = "22cb6d0f-5368-4495-95b0-3856c4bb6f7b"
 
