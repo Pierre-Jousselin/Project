@@ -29,3 +29,5 @@ jobs:
         cd code
         python daily_energy_pipeline.py
         python daily_weather_pipeline.py
+        python feature_view_making.py
+        python inference.py
