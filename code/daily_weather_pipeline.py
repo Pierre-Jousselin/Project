@@ -110,8 +110,9 @@ def upload(df):
         )
 
     # Perform the bulk write operation
+    print("before updating")
     result = collection.bulk_write(update_operations)
-
+    print("after updating")
     # Output the result
     print(f"Number of documents inserted: {result.upserted_count}")
     print(f"Number of documents updated: {result.modified_count}")
