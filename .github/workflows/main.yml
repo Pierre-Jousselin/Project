@@ -1,6 +1,9 @@
 name: Run Energy Load Script
 
-
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   run-script:
