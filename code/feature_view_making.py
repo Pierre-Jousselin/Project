@@ -3,6 +3,7 @@ import numpy as np
 from pymongo import MongoClient
 from pymongo import UpdateOne
 
+print("starting_feature_view_making")
 client = MongoClient("mongodb+srv://pgmjo:aIdg0yUMUaZHyVN7@cluster0.noq3s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")  # Modifier si nécessaire
 db_weather = client["Weather"]  # Base météo
 db_energy = client["Energy"]  # Base énergie
@@ -68,5 +69,5 @@ for country_code in country_code_list:
 
 
 
-
+print("ending feature view")
 

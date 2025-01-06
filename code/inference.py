@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 import pickle
+print(" starting inference")
 
 client = MongoClient("mongodb+srv://pgmjo:aIdg0yUMUaZHyVN7@cluster0.noq3s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")  # Modifier si nécessaire
 db_weather = client["Weather"]  # Base météo
@@ -90,3 +91,4 @@ for country_code in country_code_list:
 
 
 #########################################################################
+print('ending inference')

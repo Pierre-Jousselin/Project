@@ -7,6 +7,7 @@ from pymongo.server_api import ServerApi
 from pymongo import UpdateOne
 import time
 
+print("starting energy pipeline")
 country_code_list=["SE_1","SE_2","SE_3","SE_4"]
 entsoe_api_key = "22cb6d0f-5368-4495-95b0-3856c4bb6f7b"
 mongo_password= "aIdg0yUMUaZHyVN7"
@@ -72,3 +73,5 @@ for country_code in country_code_list:
     # Output the result
     print(f"Number of documents inserted: {result.upserted_count}")
     print(f"Number of documents updated: {result.modified_count}")
+
+print("ending ernergy piepelin")
