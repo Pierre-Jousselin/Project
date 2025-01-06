@@ -27,7 +27,7 @@ for country_code in country_code_list:
 
     print(country_code)
     load = client.query_load(country_code, start=start_date, end=end_date)
-    time.sleep(5)
+    #time.sleep(5)
     if load is not None and not load.empty:
                 # Resample hourly data to daily averages
                 daily_load = load.resample("D").mean()
