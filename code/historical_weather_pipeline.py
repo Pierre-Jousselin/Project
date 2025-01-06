@@ -11,9 +11,7 @@ from matplotlib.ticker import MultipleLocator
 import openmeteo_requests
 import requests_cache
 from retry_requests import retry
-import hopsworks
-import hsfs
-from pathlib import Path
+
 SE_dict = {"SE_1":{"Lulea":{"latitude":65.585220558314, "longitude":22.1535400967245},
                   "Kiruna":{"latitude":67.8597228129746, "longitude":20.2820265311514},
                   "Gallivare":{"latitude":67.1378762455943, "longitude":20.6603243600605},
@@ -127,8 +125,7 @@ except ValueError:
     raise ValueError("Dates must be in 'YYYY-MM-DD' format.")
 
 for key, inner_dict in SE_dict.items():
-    if key=='SE_3':
-        for inner_key, city_dict in inner_dict.items():
-            city_dict["historical_df"]= get_historical_weather(inner_key, start_date,  end_date, city_dict["latitude"], city_dict["longitude"])
-            city_dict["historical_df"]['country_code']=key
-            upload(city_dict["historical_df"])
+    for inner_key, city_dict in inner_dict.items():
+        city_dict["historical_df"]= get_historical_weather(inner_key, start_date,  end_date, city_dict["latitude"], city_dict["longitude"])
+        city_dict["historical_df"]['country_code']=key
+        upload(city_dict["historical_df"])

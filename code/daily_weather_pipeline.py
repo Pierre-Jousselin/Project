@@ -116,8 +116,7 @@ def upload(df):
     print(f"Number of documents updated: {result.modified_count}")
 
 for key, inner_dict in SE_dict.items():
-    if key=='SE_3':
-        for inner_key, city_dict in inner_dict.items():
-            city_dict["daily_df"] = get_daily_weather_forecast(inner_key, city_dict["latitude"], city_dict["longitude"])
-            city_dict["daily_df"]['country_code']=key
-            upload(city_dict["daily_df"])
+    for inner_key, city_dict in inner_dict.items():
+        city_dict["daily_df"] = get_daily_weather_forecast(inner_key, city_dict["latitude"], city_dict["longitude"])
+        city_dict["daily_df"]['country_code']=key
+        upload(city_dict["daily_df"])
