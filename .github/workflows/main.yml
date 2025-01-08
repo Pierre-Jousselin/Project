@@ -1,9 +1,9 @@
 name: Run Energy Load Script
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    #schedule:
+    #- cron: '11 6 * * *'
 
 jobs:
   run-script:
