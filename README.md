@@ -3,7 +3,7 @@
 This repository contains the implementation of a project aimed at predicting energy load in Sweden using historical and forecasted weather data. The project focuses on improving the efficiency of energy management and sustainability practices by leveraging machine learning techniques.
 
 
-
+![Project Summary Diagram](diagrame.PNG)
 
 ## Features
 
