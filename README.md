@@ -4,7 +4,7 @@ This repository contains the implementation of a project aimed at predicting ene
 
 
 
-![Project Summary Diagram](diagrame.png)
+![Project Summary Diagram](diagrame.PNG)
 
 ## Features
 
